@@ -1,0 +1,26 @@
+NET "reset_i" LOC ="G12";
+NET "clock_i" LOC ="B8";
+
+NET "select_i" LOC = "A7";
+
+NET "b_i<0>"   LOC = "P11"  ;
+NET "b_i<1>"   LOC = "L3"   ;
+NET "b_i<2>"   LOC = "K3"   ;
+NET "b_i<3>"   LOC = "B4"   ;
+NET "a_i<0>"   LOC = "G3"   ;
+NET "a_i<1>"   LOC = "F3"   ;
+NET "a_i<2>"   LOC = "E2"   ;
+NET "a_i<3>"   LOC = "N3"   ;
+
+NET "seven_segment_o<0>" LOC ="L14";
+NET "seven_segment_o<1>" LOC ="H12";
+NET "seven_segment_o<2>" LOC ="N14";
+NET "seven_segment_o<3>" LOC ="N11";
+NET "seven_segment_o<4>" LOC ="P12";
+NET "seven_segment_o<5>" LOC ="L13";
+NET "seven_segment_o<6>" LOC ="M12";
+
+NET "anode_o<0>" LOC ="F12";
+NET "anode_o<1>" LOC ="J12";
+NET "anode_o<2>" LOC ="M13";
+NET "anode_o<3>" LOC ="K14";
