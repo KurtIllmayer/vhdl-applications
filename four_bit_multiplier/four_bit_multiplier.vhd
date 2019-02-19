@@ -77,31 +77,32 @@ architecture Behavioral of four_bit_multiplier is
   -- on your own risk. All the ideas and views in this site are my own and are not by any means 
   -- related to my past or current employers. You can use the codes given in this website for 
   -- non-commercial purposes without my permission. But if you are using it for commercial 
-  -- purposes then contact me with the details of your project for my permission."  ----------------------------------------------------------------------------------------------   
+  -- purposes then contact me with the details of your project for my permission."  
+  ----------------------------------------------------------------------------------------------   
   function bin_to_bcd_mult (bin : std_logic_vector(7 downto 0)) return std_logic_vector is
     variable i      : integer :=0;                         -- Initialisieren der Schleife
     variable bcd : std_logic_vector(11 downto 0) := (others => '0'); -- Initialisieren des BCD Wertes
-    variable bint : std_logic_vector(7 downto 0)  := bin;                   -- Übergabe des Eingangssignals
+    variable bint : std_logic_vector(7 downto 0)  := bin;                   -- Ãœbergabe des Eingangssignals
   begin
   
-   for i in 0 to 7 loop                                        -- Schleife für alle 8 binären Bits des Eingangssignals
+   for i in 0 to 7 loop                                        -- Schleife fÃ¼r alle 8 binÃ¤ren Bits des Eingangssignals
       bcd(11 downto 1) := bcd(10 downto 0);  -- BCD Wert: Schieberegister um 1 nach links
-      bcd(0)                   := bint(7);                    -- MSB vom Binärwert wird zum LSB vom BCD Wert
-      bint(7 downto 1)  := bint(6 downto 0);    -- Binär Wert: Schieberegister um 1 nach links
-      bint(0)                  :='0';                             -- LSB vom Binärwert wird mit 0 aufgefüllt
+      bcd(0)                   := bint(7);                    -- MSB vom BinÃ¤rwert wird zum LSB vom BCD Wert
+      bint(7 downto 1)  := bint(6 downto 0);    -- BinÃ¤r Wert: Schieberegister um 1 nach links
+      bint(0)                  :='0';                             -- LSB vom BinÃ¤rwert wird mit 0 aufgefÃ¼llt
     
       -- Einer - Stelle der Berechnung: UNITS  
-      if(i < 7 and bcd(3 downto 0) > "0100") then    -- Addiere 3 wenn BCD Ziffern grösser als 4 sind
+      if(i < 7 and bcd(3 downto 0) > "0100") then    -- Addiere 3 wenn BCD Ziffern grÃ¶sser als 4 sind
             bcd(3 downto 0) := bcd(3 downto 0) + "0011";
       end if;
 
       -- Zehner - Stelle der Berechnung:  TENS
-      if(i < 7 and bcd(7 downto 4) > "0100") then    -- Addiere 3 wenn BCD Ziffern grösser als 4 sind                   
+      if(i < 7 and bcd(7 downto 4) > "0100") then    -- Addiere 3 wenn BCD Ziffern grÃ¶sser als 4 sind                   
             bcd(7 downto 4) := bcd(7 downto 4) + "0011";
       end if;
 
       -- Hunderter - Stelle der Berechnung:  HUNDREDS
-      if(i < 7 and bcd(11 downto 8) > "0100") then  -- Addiere 3 wenn BCD Ziffern grösser als 4 sind
+      if(i < 7 and bcd(11 downto 8) > "0100") then  -- Addiere 3 wenn BCD Ziffern grÃ¶sser als 4 sind
             bcd(11 downto 8) := bcd(11 downto 8) + "0011";
       end if;
  
@@ -121,7 +122,8 @@ architecture Behavioral of four_bit_multiplier is
   -- on your own risk. All the ideas and views in this site are my own and are not by any means 
   -- related to my past or current employers. You can use the codes given in this website for 
   -- non-commercial purposes without my permission. But if you are using it for commercial 
-  -- purposes then contact me with the details of your project for my permission."  ---------------------------------------------------------------------------------------------- 
+  -- purposes then contact me with the details of your project for my permission."  
+  ---------------------------------------------------------------------------------------------- 
   function bin_to_bcd (bin : std_logic_vector(3 downto 0)) return std_logic_vector is 
    variable i : integer range 0 to 3 :=0;
    variable bcd : std_logic_vector(7 downto 0):= (others => '0');
