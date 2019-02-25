@@ -28,7 +28,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity dds_top is
   port(clock_i            : in  std_ulogic;
        reset_i            : in  std_ulogic; 
-	    clk_o              : out std_ulogic;       
+       clk_o              : out std_ulogic;       
        phase_select_i     : in  std_ulogic_vector(3 downto 0);
        wave_select_i      : in  std_ulogic_vector(1 downto 0);
        data_o             : out std_ulogic_vector(7 downto 0));
@@ -44,34 +44,34 @@ architecture Behavioral of dds_top is
  component dds_generator
   port(clock_i            : in  std_ulogic;
        reset_i            : in  std_ulogic; 
-    	 phase_start_i      : in  std_ulogic_vector(31 downto 0);
+       phase_start_i      : in  std_ulogic_vector(31 downto 0);
        da_sinus_o         : out std_ulogic_vector(7 downto 0);
        da_saegezahn_o     : out std_ulogic_vector(7 downto 0); 
-       da_rechteck_o	     : out std_ulogic_vector(7 downto 0);  
-       da_dreieck_o	     : out std_ulogic_vector(7 downto 0);  	  
-	    clk_o              : out std_ulogic);
+       da_rechteck_o	  : out std_ulogic_vector(7 downto 0);  
+       da_dreieck_o	  : out std_ulogic_vector(7 downto 0);  	  
+       clk_o              : out std_ulogic);
  end component;
 
  component mux
   port(wave_select_i      : in  std_ulogic_vector(1 downto 0);
        da_sinus_i         : in  std_ulogic_vector(7 downto 0);
-	    da_saegezahn_i     : in  std_ulogic_vector(7 downto 0); 
-       da_rechteck_i	     : in  std_ulogic_vector(7 downto 0);  
-       da_dreieck_i	     : in  std_ulogic_vector(7 downto 0);
- 	    data_o             : out std_ulogic_vector(7 downto 0)); 
+       da_saegezahn_i     : in  std_ulogic_vector(7 downto 0); 
+       da_rechteck_i      : in  std_ulogic_vector(7 downto 0);  
+       da_dreieck_i       : in  std_ulogic_vector(7 downto 0);
+       data_o             : out std_ulogic_vector(7 downto 0)); 
  end component;
 
  signal phase_start      : std_ulogic_vector(31 downto 0);
 
  signal da_saegezahn     : std_ulogic_vector(7 downto 0); 
- signal da_rechteck	    : std_ulogic_vector(7 downto 0); 
- signal da_dreieck	    : std_ulogic_vector(7 downto 0);
+ signal da_rechteck	 : std_ulogic_vector(7 downto 0); 
+ signal da_dreieck	 : std_ulogic_vector(7 downto 0);
  signal da_sinus         : std_ulogic_vector(7 downto 0);
 
 begin
 
 Phaseincrement: select_logic port map(phase_select_i => phase_select_i,
-                                     phase_start_o  => phase_start);
+                                      phase_start_o  => phase_start);
 
 waves: dds_generator port map(clock_i        => clock_i,
                               reset_i        => reset_i,
