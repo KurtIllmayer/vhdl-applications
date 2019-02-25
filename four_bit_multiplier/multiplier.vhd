@@ -35,8 +35,6 @@ end multiplier;
 
 architecture Behavioral of multiplier is
 
- signal result_mult : unsigned(7 downto 0);
-
 begin
  
   result_o(7 downto 0) <= to_stdulogicvector(unsigned(to_stdlogicvector(a_i(3 downto 0))) * unsigned(to_stdlogicvector(b_i(3 downto 0))));
