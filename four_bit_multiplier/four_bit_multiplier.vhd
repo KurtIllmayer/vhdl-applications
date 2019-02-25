@@ -45,16 +45,16 @@ architecture Behavioral of four_bit_multiplier is
    END component; 
 
    component seven_segment
-   port(clock_i : in std_ulogic;
-        reset_i : in std_ulogic;
-        register_1_i : in std_ulogic_vector(3 downto 0);
-        register_2_i : in std_ulogic_vector(3 downto 0);
-        register_3_i : in std_ulogic_vector(3 downto 0);
-        register_4_i : in std_ulogic_vector(3 downto 0);
-        anode_1_o : out std_ulogic;
-        anode_2_o : out std_ulogic;
-        anode_3_o : out std_ulogic;
-        anode_4_o : out std_ulogic;
+   port(clock_i         : in std_ulogic;
+        reset_i         : in std_ulogic;
+        register_1_i    : in std_ulogic_vector(3 downto 0);
+        register_2_i    : in std_ulogic_vector(3 downto 0);
+        register_3_i    : in std_ulogic_vector(3 downto 0);
+        register_4_i    : in std_ulogic_vector(3 downto 0);
+        anode_1_o       : out std_ulogic;
+        anode_2_o       : out std_ulogic;
+        anode_3_o       : out std_ulogic;
+        anode_4_o       : out std_ulogic;
         seven_segment_o : out std_ulogic_vector(6 downto 0));
    end component;
 
@@ -84,32 +84,25 @@ architecture Behavioral of four_bit_multiplier is
     variable bcd : std_logic_vector(11 downto 0) := (others => '0');
     variable bint : std_logic_vector(7 downto 0)  := bin;
   begin
-  
    for i in 0 to 7 loop
       bcd(11 downto 1) := bcd(10 downto 0);
       bcd(0)                   := bint(7);
       bint(7 downto 1)  := bint(6 downto 0);
       bint(0)                  :='0';
-    
       -- UNITS  
       if(i < 7 and bcd(3 downto 0) > "0100") then
             bcd(3 downto 0) := bcd(3 downto 0) + "0011";
       end if;
-
       -- TENS
       if(i < 7 and bcd(7 downto 4) > "0100") then                  
             bcd(7 downto 4) := bcd(7 downto 4) + "0011";
       end if;
-
       -- HUNDREDS
       if(i < 7 and bcd(11 downto 8) > "0100") then
             bcd(11 downto 8) := bcd(11 downto 8) + "0011";
       end if;
- 
    end loop;
-
    return bcd;
-
   end bin_to_bcd_mult;
  
   -- http://vhdlguru.blogspot.com/2010/04/8-bit-binary-to-bcd-converter-double.html
@@ -148,7 +141,7 @@ begin
 
    four_bit: multiplier port map(a_i       => a_i,
                                  b_i       => b_i,
-			                        result_o  => result(7 downto 0));
+	                         result_o  => result(7 downto 0));
 
    mult_out(11 downto 0) <= to_stdulogicvector(bin_to_bcd_mult(to_stdlogicvector(result(7 downto 0)))); 
 
