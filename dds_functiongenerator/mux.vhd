@@ -28,10 +28,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity mux is
   port(wave_select_i      : in  std_ulogic_vector(1 downto 0);
        da_sinus_i         : in  std_ulogic_vector(7 downto 0);
-	    da_saegezahn_i     : in  std_ulogic_vector(7 downto 0); 
-       da_rechteck_i	     : in  std_ulogic_vector(7 downto 0);  
-       da_dreieck_i	     : in  std_ulogic_vector(7 downto 0);
- 	    data_o             : out std_ulogic_vector(7 downto 0)); 
+       da_saegezahn_i     : in  std_ulogic_vector(7 downto 0); 
+       da_rechteck_i	  : in  std_ulogic_vector(7 downto 0);  
+       da_dreieck_i	  : in  std_ulogic_vector(7 downto 0);
+       data_o             : out std_ulogic_vector(7 downto 0)); 
 end mux;
 
 architecture Behavioral of mux is
