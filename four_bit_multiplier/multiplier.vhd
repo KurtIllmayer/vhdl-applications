@@ -38,13 +38,7 @@ architecture Behavioral of multiplier is
  signal result_mult : unsigned(7 downto 0);
 
 begin
-
-  result_mult(7 downto 0) <= unsigned(to_stdlogicvector(a_i(3 downto 0))) * unsigned(to_stdlogicvector(b_i(3 downto 0)));
-
--- result_o(7 downto 0) <= to_stdulogicvector(result_mult(7 downto 0));
  
---  result_o(7 downto 0) <= to_stdulogicvector(unsigned(to_stdlogicvector(a_i(3 downto 0))) * unsigned(to_stdlogicvector(b_i(3 downto 0))));
-
-  result_o(7 downto 0) <= to_stdulogicvector(conv_std_logic_vector(conv_integer(result_mult(7 downto 0)),8));
+  result_o(7 downto 0) <= to_stdulogicvector(unsigned(to_stdlogicvector(a_i(3 downto 0))) * unsigned(to_stdlogicvector(b_i(3 downto 0))));
 
 end Behavioral;
