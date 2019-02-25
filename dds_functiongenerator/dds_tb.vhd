@@ -29,55 +29,47 @@ ENTITY dds_tb IS
 END dds_tb;
  
 ARCHITECTURE behavior OF dds_tb IS 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
+
     COMPONENT dds
     PORT(clk_i              : IN   std_ulogic;
          reset_i            : IN   std_ulogic;
          phase_start_i      : IN   std_ulogic_vector(31 downto 0);
-		   da_sinus_o         : out  std_ulogic_vector(7 downto 0);
-		   da_saegezahn_o     : out  std_ulogic_vector(7 downto 0);
-			da_rechteck_o	    : out  std_ulogic_vector(7 downto 0);
-			da_dreieck_o	    : out std_ulogic_vector(7 downto 0); 
+         da_sinus_o         : out  std_ulogic_vector(7 downto 0);
+	 da_saegezahn_o     : out  std_ulogic_vector(7 downto 0);
+	 da_rechteck_o	    : out  std_ulogic_vector(7 downto 0);
+	 da_dreieck_o	    : out std_ulogic_vector(7 downto 0); 
          clk_o              : OUT  std_ulogic);
     END COMPONENT;
-    
-   --Inputs
-   signal clk_i         : std_ulogic := '0';
-   signal reset_i       : std_ulogic := '0';
-   signal phase_start_i : std_ulogic_vector(31 downto 0) := (others => '0');
 
- 	--Outputs
-   signal clk_o         : std_ulogic;
-   signal da_sinus_o    : std_ulogic_vector(7 downto 0);
-   signal da_saegezahn_o: std_ulogic_vector(7 downto 0);
-   signal da_rechteck_o : std_ulogic_vector(7 downto 0);	
-	signal da_dreieck_o  : std_ulogic_vector(7 downto 0); 
-  -- Clock period definitions
+   signal clk_i          : std_ulogic := '0';
+   signal reset_i        : std_ulogic := '0';
+   signal phase_start_i  : std_ulogic_vector(31 downto 0) := (others => '0');
+   signal clk_o          : std_ulogic;
+   signal da_sinus_o     : std_ulogic_vector(7 downto 0);
+   signal da_saegezahn_o : std_ulogic_vector(7 downto 0);
+   signal da_rechteck_o  : std_ulogic_vector(7 downto 0);	
+   signal da_dreieck_o   : std_ulogic_vector(7 downto 0); 
    constant clk_i_period : time := 20 ns;
  
 BEGIN
- 
-	-- Instantiate the Unit Under Test (UUT)
+
    uut: dds PORT MAP (
           clk_i              => clk_i,
           reset_i            => reset_i,
           phase_start_i      => phase_start_i,
-			 da_sinus_o         => da_sinus_o,
-	       da_saegezahn_o     => da_saegezahn_o, 
-			 da_rechteck_o      => da_rechteck_o,
-			 da_dreieck_o       => da_dreieck_o, 
-          clk_o              => clk_o
-        );
+	  da_sinus_o         => da_sinus_o,
+	  da_saegezahn_o     => da_saegezahn_o, 
+	  da_rechteck_o      => da_rechteck_o,
+	  da_dreieck_o       => da_dreieck_o, 
+          clk_o              => clk_o);
 
-   -- Clock process definitions
-   clk_i_process :process
+   clk_i_p: process
    begin
-		clk_i <= '0';
-		wait for clk_i_period/2;
-		clk_i <= '1';
-		wait for clk_i_period/2;
-   end process;
+	clk_i <= '0';
+	wait for clk_i_period/2;
+	clk_i <= '1';
+	wait for clk_i_period/2;
+   end process clk_i_p;
 
   reset_i <= '1' after 0 ns,
              '0' after 10 ns;
@@ -92,8 +84,8 @@ BEGIN
 
 --  phase_start_i <=  4095 after 0 ns,
 --                   75592 after 40 ms,
---						179787 after 50 ms;
---                37796
+--	    	    179787 after 50 ms;
+--                   37796
 						 
   phase_start_i <= "00000000000000010010011101000111" after  0 ms,
                    "00000000000000001001001110100100" after  2 ms;
