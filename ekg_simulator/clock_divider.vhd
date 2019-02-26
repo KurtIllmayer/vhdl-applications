@@ -34,38 +34,23 @@ entity Clockdivider is
 end Clockdivider;
 
 architecture rtl of Clockdivider is
-
- signal clk_divider : std_ulogic;
- signal count   	  : integer range 0 to 390624;
-
+   signal clk_divider : std_ulogic;
+   signal count   	  : integer range 0 to 390624;
 begin
 
 count_p: process(reset_i,clock_i)
-
 begin
-
 if(reset_i='1') then
-
-		count 		<=0;
-		
-		clk_divider <='1';
-		
-elsif(clock_i'event and clock_i='1') then
-			
-			if(count = 390624) then
-				
-					count 	<=0;
-					
-					clk_divider <= not clk_divider;
-								
-			else 	--for count = 0,1,2,3......, 24999999
-								
-					count <= count +1;
-					
-			end if;
-			
-		end if;
-		
+	count 		<=0;
+	clk_divider <='1';
+elsif(clock_i'event and clock_i='1') then			
+	if(count = 390624) then				
+		count 	<=0;					
+		clk_divider <= not clk_divider;								
+	else 	--for count = 0,1,2,3......, 24999999							
+		count <= count +1;				
+	end if;			
+end if;		
 end process count_p;
 
 clk_divider_o <= clk_divider;
