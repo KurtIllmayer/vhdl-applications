@@ -1,0 +1,21 @@
+#############################################
+#   UCF File for Basys2 Board               #
+#############################################
+# System clock
+NET "clock_i"  LOC = "B8";
+NET "reset_i"  LOC = "P11";
+# PWM Output
+NET "pwm_o"    LOC = "M5";
+NET "led_o"    LOC = "B2";
+# Seven Segment display
+NET "anode_o<0>"          LOC = "F12";
+NET "anode_o<1>"          LOC = "J12";
+NET "anode_o<2>"          LOC = "M13";
+NET "anode_o<3>"          LOC = "K14";
+NET "seven_segment_o<0>"  LOC = "L14";
+NET "seven_segment_o<1>"  LOC = "H12";
+NET "seven_segment_o<2>"  LOC = "N14";
+NET "seven_segment_o<3>"  LOC = "N11";
+NET "seven_segment_o<4>"  LOC = "P12";
+NET "seven_segment_o<5>"  LOC = "L13";
+NET "seven_segment_o<6>"  LOC = "M12";
