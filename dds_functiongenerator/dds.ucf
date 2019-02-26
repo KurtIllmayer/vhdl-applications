@@ -1,0 +1,19 @@
+net "reset_i"      LOC = "A7";
+net "clock_i"      LOC = "B8";
+
+net "clk_o"        LOC = "M5";
+
+NET "wave_select_i<0>"     LOC = "P11";
+NET "wave_select_i<1>"     LOC = "L3";
+
+NET "phase_select_i<0>"    LOC = "K3";
+NET "phase_select_i<1>"    LOC = "B4";
+NET "phase_select_i<2>"    LOC = "G3";
+NET "phase_select_i<3>"    LOC = "F3";
+
+NET "data_o<5>"    LOC = "B2"  | DRIVE = 8; # Signal name = JA1
+NET "data_o<4>"    LOC = "A3"  | DRIVE = 8; # Signal name = JA2
+NET "data_o<3>"    LOC = "J3"  | DRIVE = 8; # Signal name = JA3
+NET "data_o<2>"    LOC = "B5"  | DRIVE = 8; # Signal name = JA4
+NET "data_o<7>"    LOC = "C6"  | DRIVE = 8; # Signal name = JB1
+NET "data_o<6>"    LOC = "B6"  | DRIVE = 8; # Signal name = JB2
