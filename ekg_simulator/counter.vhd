@@ -34,33 +34,20 @@ entity Counter is
 end Counter;
 
 architecture rtl of Counter is
-
 	signal count: std_logic_vector(5 downto 0);
-
 begin
 
-	counter_seg:process(clock_i,reset_i)
-   
+   counter_seg:process(clock_i,reset_i)
    begin	
-	
    if(reset_i ='1')then	
-	
      	count <= "000000";
-
-	elsif(clock_i'event and clock_i='1')then
-
+   elsif(clock_i'event and clock_i='1')then
 		if(count = "111111")then
-
 			count <= "000000";
-
 		else 
-
-				count <= count +"000001";
-
+ 			count <= count +"000001";
 		end if;
-
 	end if;
-
    end process counter_seg;
 
    counter_o(5 downto 0) <= To_StdUlogicVector(count(5 downto 0));
