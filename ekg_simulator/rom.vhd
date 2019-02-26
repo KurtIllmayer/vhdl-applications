@@ -34,11 +34,8 @@ entity rom is
 end rom;
 
 architecture rtl of rom is
-	
    type EKG_63 is array (0 to 63) of std_ulogic_vector(5 downto 0);
-	
-	constant EKG1:EKG_63:=
-
+   constant EKG1:EKG_63:=
 	("000110",
 	 "000110",
 	 "000110",
@@ -103,18 +100,13 @@ architecture rtl of rom is
 	 "000110",
 	 "000110",
 	 "000110");
-
 begin
 
   EKG_p: process(clock_i, address_i)
   begin
-
-  if(clock_i'event and clock_i= '1')then
-	
+  if(clock_i'event and clock_i= '1')then	
       data_o <= EKG1(Conv_Integer(To_Stdlogicvector(address_i)));
-
   end if;
-
   end process EKG_p;
 
 end rtl;
